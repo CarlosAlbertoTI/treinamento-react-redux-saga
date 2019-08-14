@@ -2,6 +2,8 @@
 
 .root {
   list-style: none;
+  display: table;
+  margin: 0px auto 0px auto;
 }
 
 .container {
@@ -11,4 +13,12 @@
   padding-right: 15px;
   padding-bottom: 10px;
   display: block;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  float: left;
 }

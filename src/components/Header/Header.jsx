@@ -1,7 +1,22 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from 'components/SearchBar';
+import Menu from 'components/Menu';
+import MenuItem from 'components/MenuItem';
+
+import {
+  faMobileAlt,
+  faTv,
+  faLaptop,
+  faBlender,
+  faCar,
+  faBook,
+  faMapMarked,
+  faDice,
+  faPlus,
+} from '@fortawesome/free-solid-svg-icons';
 import Style from './style/Header.scss';
+import MainMenu from '../MainMenu';
 
 class Header extends PureComponent {
   onSearch = e => {
@@ -41,6 +56,22 @@ class Header extends PureComponent {
             <SearchBar onSearchFn={onSearchFn} onChangeFn={onChangeSearchFn} />
           </div>
           <div className={Style.contentRightContainer}>card</div>
+        </div>
+
+        <div className={Style.shrinkDiv}>
+          <MainMenu>
+            <Menu>
+              <MenuItem icon={faMobileAlt}>Celulares</MenuItem>
+              <MenuItem icon={faTv}>TV</MenuItem>
+              <MenuItem icon={faLaptop}>Notebook</MenuItem>
+              <MenuItem icon={faBlender}>Eletrodom</MenuItem>
+              <MenuItem icon={faCar}>Auto Peças</MenuItem>
+              <MenuItem icon={faBook}>Livros</MenuItem>
+              <MenuItem icon={faMapMarked}>Retire na Loja</MenuItem>
+              <MenuItem icon={faDice}>Desafio</MenuItem>
+              <MenuItem icon={faPlus}>Ver Todas</MenuItem>
+            </Menu>
+          </MainMenu>
         </div>
       </header>
     );
