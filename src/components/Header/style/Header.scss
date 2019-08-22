@@ -8,19 +8,16 @@
 
 .container {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
-  height: 80px;
+  height: 100px;
   align-items: center;
-}
-
-.contentLeftContainer {
-  display: flex;
+  justify-content: center;
 }
 
 .contentCenterContainer {
   display: flex;
   flex-basis: 700px;
+  margin: 0px 25px;
 }
 
 .contentRightContainer {
@@ -37,4 +34,14 @@
 .shrinkDiv {
   width: 1000px;
   margin: 0 auto;
+}
+
+.userIconContainer {
+  position: relative;
+}
+
+.userBadgeStatusContainer {
+  position: absolute;
+  top: 24px;
+  left: 24px;
 }

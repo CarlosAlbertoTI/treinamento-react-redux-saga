@@ -13,7 +13,7 @@ Anchor.defaultProps = {
   href: '#',
   title: undefined,
   onClick: undefined,
-  style: Style
+  style: Style,
 };
 
 Anchor.propTypes = {
@@ -21,10 +21,7 @@ Anchor.propTypes = {
   title: PropTypes.string,
   onClick: PropTypes.func,
   style: PropTypes.objectOf(PropTypes.any),
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node)
-  ]).isRequired
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
 };
 
 export default pure(Anchor);

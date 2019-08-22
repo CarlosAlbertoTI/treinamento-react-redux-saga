@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import SearchBar from 'components/SearchBar';
 import Menu from 'components/Menu';
 import MenuItem from 'components/MenuItem';
-
 import {
   faMobileAlt,
   faTv,
@@ -15,6 +14,11 @@ import {
   faDice,
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
+
+import Anchor from 'components/Anchor';
+import Logo from '../../images/LogoBuscape';
+import LoggedOutIcon from './LoggedOutIcon';
+
 import Style from './style/Header.scss';
 import MainMenu from '../MainMenu';
 
@@ -51,11 +55,19 @@ class Header extends PureComponent {
     return (
       <header className={Style.root}>
         <div className={Style.container}>
-          <div className={Style.contentLeftContainer}>logo</div>
+          <div className={Style.contentLeftContainer}>
+            <Anchor>
+              <Logo />
+            </Anchor>
+          </div>
           <div className={Style.contentCenterContainer}>
             <SearchBar onSearchFn={onSearchFn} onChangeFn={onChangeSearchFn} />
           </div>
-          <div className={Style.contentRightContainer}>card</div>
+          <div className={Style.contentRightContainer}>
+            <Anchor>
+              <LoggedOutIcon />
+            </Anchor>
+          </div>
         </div>
 
         <div className={Style.shrinkDiv}>
