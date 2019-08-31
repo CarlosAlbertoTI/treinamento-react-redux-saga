@@ -1,39 +1,30 @@
-import React, { Fragment, PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Style from './style/Button.scss';
+import styled from 'styled-components';
 
-class Button extends PureComponent {
-  render() {
-    const { href, variant, onClick, children } = this.props;
+const Wrapper = styled.button`
+  border-width: 1px;
+  border-style: solid;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #22b14c;
+  color: #fff;
+`;
 
-    return (
-      <Fragment>
-        {href ? (
-          <a href={href} onClick={onClick}>
-            {children}
-          </a>
-        ) : (
-          <button className={`${Style.base} ${Style[variant]}`} type="button" onClick={onClick}>
-            {children}
-          </button>
-        )}
-      </Fragment>
-    );
-  }
-}
+const Button = ({ onClick, children }) => <Wrapper onClick={onClick}>{children}</Wrapper>;
 
 Button.defaultProps = {
-  href: undefined,
-  variant: 'default',
   children: undefined,
   onClick: undefined,
 };
 
 Button.propTypes = {
-  // optional
-  href: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-  variant: PropTypes.oneOfType(['default', 'success']),
   onClick: PropTypes.func,
 };
 

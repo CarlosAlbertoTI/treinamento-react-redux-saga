@@ -1,30 +1,26 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { pure } from 'recompose';
-import Style from './style/Anchor.scss';
 
-const Anchor = ({ href, onClick, title, children, style }) => (
-  <a className={style.root} href={href} onClick={onClick} title={title}>
+const Wrapper = styled.a``;
+
+const Anchor = ({ href, onClick, title, children }) => (
+  <Wrapper href={href} onClick={onClick} title={title}>
     {children}
-  </a>
+  </Wrapper>
 );
 
 Anchor.defaultProps = {
   href: '#',
   title: undefined,
   onClick: undefined,
-  style: Style
 };
 
 Anchor.propTypes = {
   href: PropTypes.string,
   title: PropTypes.string,
   onClick: PropTypes.func,
-  style: PropTypes.objectOf(PropTypes.any),
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node)
-  ]).isRequired
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
 };
 
-export default pure(Anchor);
+export default Anchor;

@@ -1,16 +1,32 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Style from './style/Menu.scss';
+import MenuItem from './MenuItem';
 
-const Menu = ({ children, style }) => <ul className={style.horizontal}>{children}</ul>;
+const Wrapper = styled.menu`
+  display: flex;
+  margin: 0;
+  padding: 0;
+`;
+
+const Menu = ({ as, children, className }) => (
+  <Wrapper as={as} className={className}>
+    {children}
+  </Wrapper>
+);
 
 Menu.defaultProps = {
-  style: Style,
+  children: undefined,
+  as: 'menu',
+  className: undefined,
 };
 
 Menu.propTypes = {
-  style: PropTypes.objectOf(PropTypes.any),
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+  as: PropTypes.string,
+  className: PropTypes.string,
 };
+
+Menu.Item = MenuItem;
 
 export default Menu;

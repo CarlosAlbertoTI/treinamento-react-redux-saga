@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import ViewContainer from '../ViewContainer';
 
-class HomeContainer extends Component {
-  render() {
-    return <ViewContainer title="Home page" />;
-  }
-}
+const HomeContainer = () => (
+  <ViewContainer title="Home">
+    <div>dsds</div>
+  </ViewContainer>
+);
 
-export default connect()(HomeContainer);
+export default HomeContainer;

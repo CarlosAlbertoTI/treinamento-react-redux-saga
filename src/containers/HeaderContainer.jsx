@@ -1,46 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { ui, router } from '../redux';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { ui } from '../redux';
 import Header from '../components/Header';
 
-class HeaderContainer extends Component {
-  onChangeSearch = value => {
-    const { onSearchChangeAction } = this.props;
-    onSearchChangeAction(value);
-  };
+const HeaderContainer = () => {
+  const dispatch = useDispatch();
 
-  onSearch = () => {
-    console.log('dsds');
-  };
+  const onChangeSearchAction = useCallback(
+    value => {
+      dispatch(ui.actions.onChangeSearch(value));
+    },
+    [dispatch],
+  );
 
-  push = href => {
-    const { pushAction } = this.props;
-    pushAction(href);
-  };
+  const onSearchAction = useCallback(
+    value => {
+      console.log('dsds', value);
+    },
+    [dispatch],
+  );
 
-  render() {
-    return (
-      <Header
-        pushFn={this.push}
-        onChangeSearchFn={this.onChangeSearch}
-        onSearchFn={this.onSearch}
-      />
-    );
-  }
-}
-
-HeaderContainer.propTypes = {
-  pushAction: PropTypes.func.isRequired,
-  onSearchChangeAction: PropTypes.func.isRequired,
+  return <Header onChangeSearchFn={onChangeSearchAction} onSearchFn={onSearchAction} />;
 };
 
-const mapDispatchToProps = {
-  pushAction: router.actions.push,
-  onSearchChangeAction: ui.actions.onChangeSearch,
-};
-
-export default connect(
-  null,
-  mapDispatchToProps,
-)(HeaderContainer);
+export default HeaderContainer;

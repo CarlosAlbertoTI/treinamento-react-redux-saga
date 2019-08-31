@@ -1,40 +1,63 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Style from './style/View.scss';
+import ViewHeaderWrapper from './ViewHeaderWrapper';
+import ViewBodyWrapper from './ViewBodyWrapper';
+import ViewFooterWrapper from './ViewFooterWrapper';
+import ViewTitle from './ViewTitle';
+import ViewSubtitle from './ViewSubtitle';
 
-class View extends PureComponent {
-  render() {
-    const { title, subtitle, header, footer, children } = this.props;
+const Wrapper = styled.div``;
 
-    return (
-      <div className={Style.root}>
-        <div className={Style.container}>
-          <div>
-            <div className={Style.headerContainer}>{header}</div>
-            <main className={Style.mainContainer}>
-              <h2 className={Style.viewTitle}>{title}</h2>
-              {subtitle && <div className={Style.subtitleContainer}>{subtitle}</div>}
-              {children}
-            </main>
-            <div className={Style.footerContainer}>{footer}</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+const View = ({
+  title,
+  subtitle,
+  headerWrapper,
+  header,
+  bodyWrapper,
+  footerWrapper,
+  footer,
+  children,
+}) => (
+  <Wrapper>
+    {headerWrapper || <ViewHeaderWrapper>{header}</ViewHeaderWrapper>}
+    {bodyWrapper || (
+      <ViewBodyWrapper>
+        {title && <ViewTitle>{title}</ViewTitle>}
+        {subtitle && <ViewSubtitle>{title}</ViewSubtitle>}
+        {children}
+      </ViewBodyWrapper>
+    )}
+    {footerWrapper || <ViewFooterWrapper>{footer}</ViewFooterWrapper>}
+  </Wrapper>
+);
 
 View.defaultProps = {
+  title: undefined,
   subtitle: '',
+  headerWrapper: undefined,
+  header: undefined,
+  bodyWrapper: undefined,
+  footerWrapper: undefined,
+  footer: undefined,
   children: undefined,
 };
 
 View.propTypes = {
-  title: PropTypes.string.isRequired,
-  header: PropTypes.node.isRequired,
-  footer: PropTypes.node.isRequired,
+  title: PropTypes.string,
+  headerWrapper: PropTypes.node,
+  header: PropTypes.node,
+  bodyWrapper: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
+  footerWrapper: PropTypes.node,
+  footer: PropTypes.node,
   subtitle: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
 };
+
+View.Title = ViewTitle;
+View.Subtitle = ViewSubtitle;
+View.HeaderWrapper = ViewHeaderWrapper;
+View.BodyWrapper = ViewBodyWrapper;
+View.FooterWrapper = ViewFooterWrapper;
 
 export default View;

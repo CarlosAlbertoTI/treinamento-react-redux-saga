@@ -1,14 +1,11 @@
 import React from 'react';
-import { pure } from 'recompose';
-import Style from './style/Footer.scss';
+import styled from 'styled-components';
 
-const Footer = () => (
-  <div className={Style.root}>
-    <div className={Style.container}>
-      <div className={Style.footerLeftContainer}>Cicero Viana</div>
-      <div className={Style.footerRightContainer}>github.com/cicerohen</div>
-    </div>
-  </div>
-);
+const Wrapper = styled.footer`
+  min-height: 80px;
+  background-color: ${props => props.theme.palettes.default};
+`;
 
-export default pure(Footer);
+const Footer = () => <Wrapper>footer</Wrapper>;
+
+export default Footer;
